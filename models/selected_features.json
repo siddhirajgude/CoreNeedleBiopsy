@@ -1,0 +1,44 @@
+{
+  "method": "mutual_info",
+  "k_requested": 10,
+  "k_selected": 10,
+  "selected_features": [
+    "HER2_Negative",
+    "Ki67",
+    "HER2 Expression_3+",
+    "ER_Negative",
+    "PR_Negative",
+    "Histological grading",
+    "HER2 Expression_1+",
+    "HER2 Expression_0",
+    "HER2 Expression_2+",
+    "Number of lymph node metastases"
+  ],
+  "feature_scores": {
+    "Age(years)": 0.037648874961073275,
+    "Tumour Size(cm)": 0.0,
+    "Histological grading": 0.11701398202655255,
+    "Ki67": 0.4833404694740857,
+    "Number of lymph node metastases": 0.03819784212461297,
+    "Tumour Type_Invasive ductal carcinoma": 0.0,
+    "Tumour Type_Invasive lobular carcinoma": 0.03272652064181081,
+    "Tumour Type_Other type": 0.0,
+    "ER_Negative": 0.28782636147341,
+    "PR_Negative": 0.24696257228906582,
+    "HER2_Negative": 0.5445739130457761,
+    "HER2 Expression_0": 0.08388054206269491,
+    "HER2 Expression_1+": 0.11656831908900811,
+    "HER2 Expression_2+": 0.06228044061430893,
+    "HER2 Expression_3+": 0.3542215618728799,
+    "Surgical_Axillary lymph node dissection": 0.024142022222891857,
+    "ALN status_N+(1-2)": 0.009639631611549238,
+    "ALN status_N0": 0.006912050981313644
+  },
+  "dropped_collinear": [
+    "ER_Positive",
+    "PR_Positive",
+    "HER2_Positive",
+    "Surgical_Sentinel lymph node biopsy",
+    "ALN status_N+(>2)"
+  ]
+}

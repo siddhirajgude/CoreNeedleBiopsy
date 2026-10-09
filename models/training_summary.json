@@ -1,0 +1,146 @@
+{
+  "best_model_name": "random_forest",
+  "selected_features": [
+    "HER2_Negative",
+    "Ki67",
+    "HER2 Expression_3+",
+    "ER_Negative",
+    "PR_Negative",
+    "Histological grading",
+    "HER2 Expression_1+",
+    "HER2 Expression_0",
+    "HER2 Expression_2+",
+    "Number of lymph node metastases"
+  ],
+  "best_model_details": {
+    "model_name": "random_forest",
+    "best_params": {
+      "class_weight": "balanced",
+      "max_depth": 5,
+      "min_samples_split": 2,
+      "n_estimators": 50
+    },
+    "primary_metric": "f1_weighted",
+    "primary_score": 0.9608433578750596,
+    "cv_metrics": {
+      "cv_accuracy_mean": 0.9609885137486949,
+      "cv_accuracy_std": 0.008045313651310943,
+      "cv_f1_weighted_mean": 0.9608433578750596,
+      "cv_f1_weighted_std": 0.008226568796291174,
+      "cv_precision_weighted_mean": 0.9621723257272489,
+      "cv_recall_weighted_mean": 0.9609885137486949
+    }
+  },
+  "all_candidates": [
+    {
+      "model_name": "random_forest",
+      "best_params": {
+        "class_weight": "balanced",
+        "max_depth": 5,
+        "min_samples_split": 2,
+        "n_estimators": 50
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9608433578750596,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9609885137486949,
+        "cv_accuracy_std": 0.008045313651310943,
+        "cv_f1_weighted_mean": 0.9608433578750596,
+        "cv_f1_weighted_std": 0.008226568796291174,
+        "cv_precision_weighted_mean": 0.9621723257272489,
+        "cv_recall_weighted_mean": 0.9609885137486949
+      }
+    },
+    {
+      "model_name": "xgboost",
+      "best_params": {
+        "eval_metric": "mlogloss",
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 50
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9608433578750596,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9609885137486949,
+        "cv_accuracy_std": 0.008045313651310943,
+        "cv_f1_weighted_mean": 0.9608433578750596,
+        "cv_f1_weighted_std": 0.008226568796291174,
+        "cv_precision_weighted_mean": 0.9621723257272489,
+        "cv_recall_weighted_mean": 0.9609885137486949
+      }
+    },
+    {
+      "model_name": "gradient_boosting",
+      "best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 50
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9549428635526773,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9550852767142362,
+        "cv_accuracy_std": 0.010963245063541483,
+        "cv_f1_weighted_mean": 0.9549428635526773,
+        "cv_f1_weighted_std": 0.010975504862781258,
+        "cv_precision_weighted_mean": 0.9564380676134636,
+        "cv_recall_weighted_mean": 0.9550852767142362
+      }
+    },
+    {
+      "model_name": "logistic_regression",
+      "best_params": {
+        "C": 1.0,
+        "class_weight": null,
+        "max_iter": 1000
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9443860254122753,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9444761573268361,
+        "cv_accuracy_std": 0.018034776606130464,
+        "cv_f1_weighted_mean": 0.9443860254122753,
+        "cv_f1_weighted_std": 0.018085187581024537,
+        "cv_precision_weighted_mean": 0.9457885065615754,
+        "cv_recall_weighted_mean": 0.9444761573268361
+      }
+    },
+    {
+      "model_name": "svm",
+      "best_params": {
+        "C": 10.0,
+        "class_weight": "balanced",
+        "kernel": "rbf",
+        "probability": true
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9429900010317491,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9432648799164636,
+        "cv_accuracy_std": 0.012171443545109347,
+        "cv_f1_weighted_mean": 0.9429900010317491,
+        "cv_f1_weighted_std": 0.01238907004595922,
+        "cv_precision_weighted_mean": 0.945422417182806,
+        "cv_recall_weighted_mean": 0.9432648799164636
+      }
+    },
+    {
+      "model_name": "knn",
+      "best_params": {
+        "n_neighbors": 5,
+        "weights": "distance"
+      },
+      "primary_metric": "f1_weighted",
+      "primary_score": 0.9247329338533217,
+      "cv_metrics": {
+        "cv_accuracy_mean": 0.9243717368604247,
+        "cv_accuracy_std": 0.012469558482861109,
+        "cv_f1_weighted_mean": 0.9247329338533217,
+        "cv_f1_weighted_std": 0.011960150397622127,
+        "cv_precision_weighted_mean": 0.9274146149135001,
+        "cv_recall_weighted_mean": 0.9243717368604247
+      }
+    }
+  ]
+}

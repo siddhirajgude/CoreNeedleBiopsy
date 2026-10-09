@@ -1,0 +1,114 @@
+# ==============================================================================
+# CNB Breast Cancer Prediction & Diagnosis - Pipeline Configuration
+# ==============================================================================
+
+project:
+  name: "CNB_Breast_Cancer_Prediction"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  raw_data: "data/raw/clinical_data.csv"
+  processed_dir: "data/processed"
+  train_data: "data/processed/train.csv"
+  test_data: "data/processed/test.csv"
+  preprocessor_artifact: "models/preprocessor.joblib"
+  label_encoder_artifact: "models/label_encoder.joblib"
+  selected_features_artifact: "models/selected_features.json"
+  models_dir: "models"
+  best_model: "models/best_model.joblib"
+  all_models_dir: "models/candidates"
+  results_dir: "results"
+  figures_dir: "results/figures"
+  metrics_dir: "results/metrics"
+  tables_dir: "results/tables"
+
+data:
+  target_col: "Molecular subtype"
+  id_cols:
+    - "Patient ID"
+    - "patient_id"
+    - "sample_id"
+  test_size: 0.20
+  stratify: true
+
+preprocessing:
+  missing_numeric_strategy: "median"        # median | mean | knn
+  missing_categorical_strategy: "most_frequent" # most_frequent | constant
+  categorical_fill_value: "Unknown"
+  numeric_scaling: "standard"                # standard | robust | minmax | none
+  categorical_encoding: "onehot"            # onehot | ordinal
+  handle_imbalance: "none"                  # none | smote | class_weight
+  outlier_clipping: true
+  outlier_lower_percentile: 0.01
+  outlier_upper_percentile: 0.99
+
+feature_selection:
+  enabled: true
+  method: "mutual_info"                     # mutual_info | rfe | lasso | tree_importance
+  k_features: 10
+  correlation_threshold: 0.85
+  estimator: "random_forest"                # random_forest | logistic_regression
+
+training:
+  cv_folds: 5
+  primary_metric: "f1_weighted"             # f1_weighted | accuracy | roc_auc_ovr | recall_weighted
+  secondary_metrics:
+    - "accuracy"
+    - "f1_macro"
+    - "precision_weighted"
+    - "recall_weighted"
+  hyperparameter_search: "grid"             # grid | random
+  n_iter_random_search: 15
+  models_to_train:
+    - "logistic_regression"
+    - "random_forest"
+    - "svm"
+    - "gradient_boosting"
+    - "xgboost"
+    - "knn"
+    - "naive_bayes"
+
+hyperparameters:
+  logistic_regression:
+    C: [0.1, 1.0, 10.0]
+    max_iter: [1000]
+    class_weight: ["balanced", null]
+
+  random_forest:
+    n_estimators: [50, 100, 200]
+    max_depth: [null, 5, 10]
+    min_samples_split: [2, 5]
+    class_weight: ["balanced", null]
+
+  svm:
+    C: [0.1, 1.0, 10.0]
+    kernel: ["rbf", "linear"]
+    probability: [true]
+    class_weight: ["balanced", null]
+
+  gradient_boosting:
+    n_estimators: [50, 100]
+    learning_rate: [0.05, 0.1]
+    max_depth: [3, 5]
+
+  xgboost:
+    n_estimators: [50, 100]
+    learning_rate: [0.05, 0.1]
+    max_depth: [3, 5]
+    eval_metric: ["mlogloss"]
+
+  knn:
+    n_neighbors: [3, 5, 7]
+    weights: ["uniform", "distance"]
+
+  naive_bayes:
+    var_smoothing: [1e-9, 1e-8]
+
+evaluation:
+  bootstrap_iterations: 1000
+  confidence_level: 0.95
+  generate_plots: true
+  interpretation:
+    method: "tree"
+    num_samples_for_shap: 100
